@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<canvas id="huizhang-k">浏览器不支持CANVAS绘图</canvas>
+<script>
+  (function(){
+    var huizhang=document.getElementById("huizhang-k");
+    huizhang.width="1000";
+    huizhang.height="500";
+    huizhang.style.background="#ccc";
+    var ctx=huizhang.getContext("2d");
+    ctx.arc(500,250,200,0,360);
+    ctx.stroke();
+    window.addEventListener("keydown",function(e){
+      console.log(e.keyCode);
+      switch(e.keyCode){
+        case 66:ctx.strokeStyle="blue";break;
+        case 82:ctx.strokeStyle="red";break;
+      }
+    })
+    ctx.beginPath();
+    huizhang.addEventListener("mousedown",function(e){
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+      huizhang.addEventListener("mousemove",myFun)
+      function myFun(e){
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        ctx.moveTo(e.offsetX, e.offsetY);
+        ctx.closePath();
+      }
+      huizhang.addEventListener("mouseup",function(){
+        huizhang.removeEventListener("mousemove",myFun);
+      })
+    })
+  })()
+</script>
+</body>
+</html>
