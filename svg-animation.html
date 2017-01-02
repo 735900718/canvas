@@ -16,9 +16,27 @@
       stroke-linejoin: round;
       /*开头结尾为圆角*/
       stroke-linecap:round;
-      stroke-dasharray: 85;
+      stroke-dasharray: 100%;
       animation: lineMove 2s;
       animation-delay: inherit;
+    }
+    .text{
+      fill:none;
+      stroke: #ff7700;
+      stroke-width: 2;
+    }
+    .text text{
+      font-family: "microsoft yahei";
+      font-size: 50px;
+      stroke-dashoffset: 100%;
+      stroke-dasharray: 100%;
+      animation: textMove 5s linear forwards;
+    }
+    @keyframes textMove {
+      100%{stroke-dashoffset: 0;}
+    }
+    input{
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -34,6 +52,12 @@
   <line class="line" x1="20" y1="20" x2="20" y2="80"></line>
   <polyline class="line" points="50,20 20,50 50,80"></polyline>
 </svg>
+<br/>
+<svg class="text">
+  <text id="my-name" x="0" y="50">LYK</text>
+</svg>
+<br/>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script>
   var svg=document.querySelectorAll("[data-show=none]");
   var length=svg.length;
