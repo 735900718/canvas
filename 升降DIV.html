@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    div {
+      width: 50px;
+      height: 50px;
+      border: 1px solid red;
+      display: inline-block;
+      transition: 2s;
+      position: absolute;
+      top: 0;
+    }
+    .down {
+      top: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    var div=document.getElementsByTagName("div");
+    var length=div.length;
+    for(let i=0;i<length;i++){
+      div[i].style="transition-delay:"+i/5+"s;left:"+i*100+"px;";
+    }
+    window.onclick=function(){
+      for(let i=0;i<length;i++){
+        div[i].className=div[i].className=="down"?"":"down";
+      }
+    }
+  </script>
+</body>
+</html>
