@@ -39,24 +39,45 @@
     <div><span>×</span></div>
   </div>
   <script>
-    var list=["△","□","○","×"];
-    function getText(min,max){
-      return Math.floor(Math.random()*(max-min)+min);
-    };
-    (function(){
-      let span=document.getElementsByTagName("span");
-      let spanLength=span.length;
-      for(let i=0;i<spanLength;i++){
-        setTimeout(()=>{
-          span[i].innerHTML=list[getText(4,0)];
-        },4000)
-        setInterval(()=>{
+//    var list=["△","□","○","×"];
+//    function getText(min,max){
+//      return Math.floor(Math.random()*(max-min)+min);
+//    };
+//    (function(){
+//      let span=document.getElementsByTagName("span");
+//      let spanLength=span.length;
+//      for(let i=0;i<spanLength;i++){
+//        setTimeout(()=>{
+//          span[i].innerHTML=list[getText(4,0)];
+//        },4000)
+//        setInterval(()=>{
+//          setTimeout(()=>{
+//            span[i].innerHTML=list[getText(4,0)];
+//          },4000)
+//        },8000);
+//      }
+//    })()
+    var loading={
+      list:["△","□","○","×"],
+      getText:function(min,max){
+        return Math.floor(Math.random()*(max-min)+min);
+      },
+      init:function(){
+        let span=document.getElementsByTagName("span");
+        let spanLength=span.length;
+        for(let i=0;i<spanLength;i++){
           setTimeout(()=>{
-            span[i].innerHTML=list[getText(4,0)];
-          },4000)
-        },8000);
+            span[i].innerHTML=this.list[this.getText(4,0)];
+          },4000);
+          setInterval(()=>{
+            setTimeout(()=>{
+              span[i].innerHTML=this.list[this.getText(4,0)];
+            },4000)
+          },8000);
+        }
       }
-    })()
+    }
+    loading.init();
   </script>
 </body>
 </html>

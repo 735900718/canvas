@@ -1,0 +1,11 @@
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS tarena;
+CREATE DATABASE tarena CHARSET=UTF8;
+USE tarena;
+
+CREATE TABLE score(
+    sId INT PRIMARY KEY AUTO_INCREMENT,
+    stuName VARCHAR(16),
+    chinese INT,
+    math INT
+);

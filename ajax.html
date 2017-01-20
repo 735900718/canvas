@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>成绩录入系统</h1>
+学生姓名：  <input id="stuName">
+语文成绩：  <input id="chinese">
+数学成绩：  <input id="math">
+<input type="button" value="保存成绩">
+<script>
+  console.log(stuName);
+  document.querySelector("[type=button]").onclick=function(){
+  console.log(1);
+  //  1.创建xhr对象
+  var xhr=new XMLHttpRequest();
+//  2.绑定监听函数，处理XHR的每一次状态变化
+  xhr.onreadystatechange=function(msg){
+    if (xhr.readyState === 4) {//响应完成
+      if (xhr.status === 200) {//响应成功
+        console.log(msg);
+      }
+    }
+  }
+//  3.打开到web服务器的链接
+  xhr.open('get',`score_add.php?stuName=`+stuName.value+`&chinese=`+chinese.value+`&math=`+math.value,true);
+//  3.5.修改请求消息头部
+  xhr.setRequestHeader('Content-Type',  'application/x-www-form-urlencoded');
+//  4.发送请求的主体
+  xhr.send(null);
+}
+</script>
+</body>
+</html>
