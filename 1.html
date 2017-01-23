@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  var x = 1;
+  var y = 0;
+  var z = 0;
+  function add(n){n=n+1;}
+  y = add(x); //undefined 因为函数没有返回值
+  function add(n){n=n+3;}
+  z = add(x); //undefined
+
+
+  for(i=0, j=0; i<10, j<6; i++, j++){
+    k = i + j; //10  i,j在等于5时退出循环
+  }
+
+
+  window.a=300;
+  function fn1(){
+    this.a=100;
+    this.b=200;
+    return function(){//控制台输出全局a
+      console.log(this.a);
+    }.call(arguments[0]);
+  }
+  function fn2(){
+    this.a=new fn1();
+  }
+  var a=new fn1().b; //300
+  //a=200
+  var v=new fn1(fn2());//200 {a:100,b:200}
+  //a={a:100,b:200}
+</script>
+</body>
+</html>
